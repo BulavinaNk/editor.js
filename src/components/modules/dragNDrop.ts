@@ -78,6 +78,11 @@ export default class DragNDrop extends Module {
     BlockManager.blocks.forEach((block) => {
       block.dropTarget = false;
     });
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    if (window.editorJsDrag && window.editorJsDrag.dragImageBlock) {
+      return;
+    }
 
     if (SelectionUtils.isAtEditor && !SelectionUtils.isCollapsed && this.isStartedAtEditor) {
       document.execCommand('delete');
